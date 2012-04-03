@@ -1,0 +1,13 @@
+c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\Bin\Release\ApplicationIcon.png
+c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\Bin\Release\Background.png
+c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\Bin\Release\PNR Status.dll
+c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\Bin\Release\PNR Status.pdb
+c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\Bin\Release\AppManifest.xaml
+c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\Bin\Release\PNR_Status.xap
+c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\obj\Release\ResolveAssemblyReference.cache
+c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\obj\Release\App.g.i.cs
+c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\obj\Release\MainPage.g.i.cs
+c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\obj\Release\PNR Status.g.resources
+c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\obj\Release\PNR Status.dll
+c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\obj\Release\PNR Status.pdb
+c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\obj\Release\XapCacheFile.xml
