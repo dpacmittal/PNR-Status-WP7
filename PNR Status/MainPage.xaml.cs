@@ -21,15 +21,14 @@ namespace PNR_Status
     public partial class MainPage : PhoneApplicationPage
     {
         // Constructor
+        WebClient c;
+        int status = 0;
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            getResult("http://pnrapi.alagu.net/api/v1.0/pnr/" + pnrBox.Text);
-        }
+        
         public string var_dump(object obj, int recursion)
         {
             StringBuilder result = new StringBuilder();
@@ -150,7 +149,7 @@ namespace PNR_Status
             [DataMember(Name = "class")]
             public string ticket_class { get; set; }
             [DataMember]
-            public string travel_date { get; set; }
+            public pnrdate travel_date { get; set; }
             [DataMember]
             public Seat[] passenger { get; set; }
             [DataMember]
@@ -169,6 +168,18 @@ namespace PNR_Status
             }
         }
         [DataContract]
+        public class pnrdate
+        {
+            [DataMember]
+            public string date { get; set; }
+            [DataMember]
+            public string timestamp { get; set; }
+            public string ToString()
+            {
+                return date;
+            }
+        }
+        [DataContract]
         public class Seat
         {
             [DataMember]
@@ -176,9 +187,38 @@ namespace PNR_Status
             [DataMember]
             public string status { get; set; }
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            if (pnrBox.Text.Length < 1)
+            {
+                textBlock1.Text = "You didn't enter anything! Type pnr number in the box above";
+            }
+            else
+            {
+                if (status == 1)
+                {
+                    c.CancelAsync();
+                    resetUI();
+                    status = 0;
+                }
+                else
+                {
+                    button1.Content = " X ";
+                    status = 1;
+                    getResult("http://pnrapi.alagu.net/api/v1.0/pnr/" + pnrBox.Text);
+                }
+            }
+        }
+        public void resetUI()
+        {
+            button1.Content = "Go";
+            textBlock1.Text = "Type pnr number in the box above";
+        }
         public void getResult(string websiteURL)
         {
-            WebClient c = new WebClient();
+            c = new WebClient();
+            textBlock1.Text = "Loading... please wait. Press X to cancel.";
             c.DownloadStringAsync(new Uri(websiteURL));
             c.DownloadStringCompleted += new DownloadStringCompletedEventHandler(c_DownloadStringCompleted);
         }
@@ -186,7 +226,7 @@ namespace PNR_Status
         void c_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             
-            if (!e.Cancelled)
+            if (!e.Cancelled && e.Error==null)
             {
                 String jsonString = e.Result;
                 textBlock1.Text = jsonString;
@@ -222,19 +262,19 @@ namespace PNR_Status
                             information += "Class: " + obj.data.ticket_class + Environment.NewLine;
 
                         if (obj.data.travel_date != null)
-                            information += "Trave Date: " + obj.data.travel_date + Environment.NewLine;
+                            information += "Trave Date: " + obj.data.travel_date.ToString() + Environment.NewLine;
 
 
-                        if (obj.data.chart_prepared != "false")
-                        {
-                            information += "Chart Prepared: " + obj.data.travel_date + Environment.NewLine;
+                        //if (obj.data.chart_prepared != "false")
+                        //{
+                            information += "Chart Prepared: " + obj.data.chart_prepared + Environment.NewLine;
                             int i = 1;
                             foreach (Seat s in obj.data.passenger)
                             {
                                 information += "Seat " + Convert.ToString(i) + ": Seat Number = " + s.seat_number + ", Status = " + s.status + Environment.NewLine;
                                 i++;
                             }
-                        }
+                        //}
                     }
                     else
                     {
@@ -242,7 +282,15 @@ namespace PNR_Status
                     }
                     //textBlock1.Text += var_dump(obj.data, 0);
                     textBlock1.Text = information;
+                    button1.Content = "Go";
+                    status = 0;
                 }
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show("There's some problem with your network/data connection.");
+                resetUI();
+                status = 0;
             }
         }
     }

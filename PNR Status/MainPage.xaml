@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
@@ -15,22 +16,35 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <controls:Pivot Title="PNR Status">
+            <controls:PivotItem Header="Query">
+      
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="PageTitle" Text="PNR Status" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+                <!--TitlePanel contains the name of the application and page title-->
+                
 
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBox Height="72" HorizontalAlignment="Left" Name="pnrBox" Text="" VerticalAlignment="Top" Width="362" InputScope="Number" />
-            <Button Content="Go" Height="72" HorizontalAlignment="Left" Margin="350,0,0,0" Name="button1" VerticalAlignment="Top" Width="100" Click="button1_Click" />
-            <TextBlock Height="556" HorizontalAlignment="Left" Margin="9,78,0,0" Name="textBlock1" Text="Type pnr number in the box above" VerticalAlignment="Top" Width="447" TextWrapping="Wrap" FontFamily="Segoe WP Light" FontSize="24" FontWeight="Normal" />
-        </Grid>
+                <!--ContentPanel - place additional content here-->
+                <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+                    <TextBox Height="72" HorizontalAlignment="Left" Name="pnrBox" Text="" VerticalAlignment="Top" Width="343" InputScope="Number" />
+                    <Button Content="Go" Height="72" HorizontalAlignment="Left" Margin="330,0,0,0" Name="button1" VerticalAlignment="Top" Width="100" Click="button1_Click" />
+                    <ScrollViewer Height="Auto" VerticalAlignment="Top" Margin="9,78,0,0">
+                        <TextBlock Height="Auto" HorizontalAlignment="Left" Name="textBlock1" Text="Type pnr number in the box above" VerticalAlignment="Top" Width="447" TextWrapping="Wrap" FontFamily="Segoe WP Light" FontSize="24" FontWeight="Normal" />
+                    </ScrollViewer>
+                </Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Header="About">
+            <!--Double line list with text wrapping-->
+                <Grid>
+                    <TextBlock Margin="9,-1,0,0" Name="about" Height="608" FontSize="24" FontFamily="Segoe WP SemiLight">
+                            Application Name: PNR Status <LineBreak/>
+                            Version: 1.0<LineBreak/>
+                            Developed By: Deepak Mittal<LineBreak/>
+                            Contact: dpac.mittal2@gmail.com <LineBreak/>
+                            PNR API by http://pnrapi.alagu.net
+                    </TextBlock>
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->

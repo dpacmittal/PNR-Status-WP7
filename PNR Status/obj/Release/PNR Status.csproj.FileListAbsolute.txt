@@ -11,3 +11,5 @@ c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\obj\Re
 c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\obj\Release\PNR Status.dll
 c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\obj\Release\PNR Status.pdb
 c:\users\dpac\documents\visual studio 2010\Projects\PNR Status\PNR Status\obj\Release\XapCacheFile.xml
+C:\Users\dpac\Documents\Visual Studio 2010\Projects\PNR Status\PNR Status\Bin\Release\Microsoft.Phone.Controls.dll
+C:\Users\dpac\Documents\Visual Studio 2010\Projects\PNR Status\PNR Status\Bin\Release\Microsoft.Phone.Controls.xml

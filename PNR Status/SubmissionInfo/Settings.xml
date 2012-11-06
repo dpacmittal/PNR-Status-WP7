@@ -1,9 +1,6 @@
 <MarketplaceDetails>
-  <SmallAppTile>
-  </SmallAppTile>
-  <LargeAppTile>
-  </LargeAppTile>
-  <PCAppTile>
-  </PCAppTile>
-  <ScreenShots>;;;;;;;;</ScreenShots>
+  <SmallAppTile>pnr-99.png</SmallAppTile>
+  <LargeAppTile>pnr-173.png</LargeAppTile>
+  <PCAppTile>pnr-200.png</PCAppTile>
+  <ScreenShots>pnr-ss.png;;;;;;;;</ScreenShots>
 </MarketplaceDetails>
